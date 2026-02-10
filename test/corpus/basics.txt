@@ -1,0 +1,528 @@
+================================================================================
+Simple fact
+================================================================================
+
+parent(alice, bob).
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (clause
+    (fact
+      (term
+        (pipe_expr
+          (add_expr
+            (mul_expr
+              (primary_term
+                (struct
+                  (atom
+                    (unquoted_atom))
+                  (term
+                    (pipe_expr
+                      (add_expr
+                        (mul_expr
+                          (primary_term
+                            (atom
+                              (unquoted_atom)))))))
+                  (term
+                    (pipe_expr
+                      (add_expr
+                        (mul_expr
+                          (primary_term
+                            (atom
+                              (unquoted_atom))))))))))))))))
+
+================================================================================
+Simple rule
+================================================================================
+
+grandparent(X, Y) :- parent(X, Z), parent(Z, Y).
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (clause
+    (rule
+      (term
+        (pipe_expr
+          (add_expr
+            (mul_expr
+              (primary_term
+                (struct
+                  (atom
+                    (unquoted_atom))
+                  (term
+                    (pipe_expr
+                      (add_expr
+                        (mul_expr
+                          (primary_term
+                            (variable))))))
+                  (term
+                    (pipe_expr
+                      (add_expr
+                        (mul_expr
+                          (primary_term
+                            (variable))))))))))))
+      (goals
+        (term
+          (pipe_expr
+            (add_expr
+              (mul_expr
+                (primary_term
+                  (struct
+                    (atom
+                      (unquoted_atom))
+                    (term
+                      (pipe_expr
+                        (add_expr
+                          (mul_expr
+                            (primary_term
+                              (variable))))))
+                    (term
+                      (pipe_expr
+                        (add_expr
+                          (mul_expr
+                            (primary_term
+                              (variable))))))))))))
+        (term
+          (pipe_expr
+            (add_expr
+              (mul_expr
+                (primary_term
+                  (struct
+                    (atom
+                      (unquoted_atom))
+                    (term
+                      (pipe_expr
+                        (add_expr
+                          (mul_expr
+                            (primary_term
+                              (variable))))))
+                    (term
+                      (pipe_expr
+                        (add_expr
+                          (mul_expr
+                            (primary_term
+                              (variable))))))))))))))))
+
+================================================================================
+List with tail
+================================================================================
+
+member(X, [X|Y]).
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (clause
+    (fact
+      (term
+        (pipe_expr
+          (add_expr
+            (mul_expr
+              (primary_term
+                (struct
+                  (atom
+                    (unquoted_atom))
+                  (term
+                    (pipe_expr
+                      (add_expr
+                        (mul_expr
+                          (primary_term
+                            (variable))))))
+                  (term
+                    (pipe_expr
+                      (add_expr
+                        (mul_expr
+                          (primary_term
+                            (list
+                              (term
+                                (pipe_expr
+                                  (add_expr
+                                    (mul_expr
+                                      (primary_term
+                                        (variable))))))
+                              (term
+                                (pipe_expr
+                                  (add_expr
+                                    (mul_expr
+                                      (primary_term
+                                        (variable)))))))))))))))))))))
+
+================================================================================
+Numbers
+================================================================================
+
+cube(1, 2, 3).
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (clause
+    (fact
+      (term
+        (pipe_expr
+          (add_expr
+            (mul_expr
+              (primary_term
+                (struct
+                  (atom
+                    (unquoted_atom))
+                  (term
+                    (pipe_expr
+                      (add_expr
+                        (mul_expr
+                          (primary_term
+                            (number))))))
+                  (term
+                    (pipe_expr
+                      (add_expr
+                        (mul_expr
+                          (primary_term
+                            (number))))))
+                  (term
+                    (pipe_expr
+                      (add_expr
+                        (mul_expr
+                          (primary_term
+                            (number)))))))))))))))
+
+================================================================================
+Negative numbers
+================================================================================
+
+translate(obj, -10, -20, -30).
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (clause
+    (fact
+      (term
+        (pipe_expr
+          (add_expr
+            (mul_expr
+              (primary_term
+                (struct
+                  (atom
+                    (unquoted_atom))
+                  (term
+                    (pipe_expr
+                      (add_expr
+                        (mul_expr
+                          (primary_term
+                            (atom
+                              (unquoted_atom)))))))
+                  (term
+                    (pipe_expr
+                      (add_expr
+                        (mul_expr
+                          (primary_term
+                            (number))))))
+                  (term
+                    (pipe_expr
+                      (add_expr
+                        (mul_expr
+                          (primary_term
+                            (number))))))
+                  (term
+                    (pipe_expr
+                      (add_expr
+                        (mul_expr
+                          (primary_term
+                            (number)))))))))))))))
+
+================================================================================
+Pipe operator
+================================================================================
+
+cube(1,1,1) |> scale(2) |> translate(5,5,5).
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (clause
+    (fact
+      (term
+        (pipe_expr
+          (add_expr
+            (mul_expr
+              (primary_term
+                (struct
+                  (atom
+                    (unquoted_atom))
+                  (term
+                    (pipe_expr
+                      (add_expr
+                        (mul_expr
+                          (primary_term
+                            (number))))))
+                  (term
+                    (pipe_expr
+                      (add_expr
+                        (mul_expr
+                          (primary_term
+                            (number))))))
+                  (term
+                    (pipe_expr
+                      (add_expr
+                        (mul_expr
+                          (primary_term
+                            (number))))))))))
+          (add_expr
+            (mul_expr
+              (primary_term
+                (struct
+                  (atom
+                    (unquoted_atom))
+                  (term
+                    (pipe_expr
+                      (add_expr
+                        (mul_expr
+                          (primary_term
+                            (number))))))))))
+          (add_expr
+            (mul_expr
+              (primary_term
+                (struct
+                  (atom
+                    (unquoted_atom))
+                  (term
+                    (pipe_expr
+                      (add_expr
+                        (mul_expr
+                          (primary_term
+                            (number))))))
+                  (term
+                    (pipe_expr
+                      (add_expr
+                        (mul_expr
+                          (primary_term
+                            (number))))))
+                  (term
+                    (pipe_expr
+                      (add_expr
+                        (mul_expr
+                          (primary_term
+                            (number)))))))))))))))
+
+================================================================================
+Range variable both bounds
+================================================================================
+
+hoge(0<X<10).
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (clause
+    (fact
+      (term
+        (pipe_expr
+          (add_expr
+            (mul_expr
+              (primary_term
+                (struct
+                  (atom
+                    (unquoted_atom))
+                  (term
+                    (pipe_expr
+                      (add_expr
+                        (mul_expr
+                          (primary_term
+                            (range_var
+                              (number)
+                              (comp_op)
+                              (variable)
+                              (comp_op)
+                              (number))))))))))))))))
+
+================================================================================
+Range variable right only
+================================================================================
+
+hoge(X<=10).
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (clause
+    (fact
+      (term
+        (pipe_expr
+          (add_expr
+            (mul_expr
+              (primary_term
+                (struct
+                  (atom
+                    (unquoted_atom))
+                  (term
+                    (pipe_expr
+                      (add_expr
+                        (mul_expr
+                          (primary_term
+                            (range_var
+                              (variable)
+                              (comp_op)
+                              (number))))))))))))))))
+
+================================================================================
+Arithmetic expression
+================================================================================
+
+result(X + Y * Z).
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (clause
+    (fact
+      (term
+        (pipe_expr
+          (add_expr
+            (mul_expr
+              (primary_term
+                (struct
+                  (atom
+                    (unquoted_atom))
+                  (term
+                    (pipe_expr
+                      (add_expr
+                        (mul_expr
+                          (primary_term
+                            (variable)))
+                        (mul_expr
+                          (primary_term
+                            (variable))
+                          (primary_term
+                            (variable)))))))))))))))
+
+================================================================================
+Line comment
+================================================================================
+
+% This is a comment
+fact.
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (line_comment)
+  (clause
+    (fact
+      (term
+        (pipe_expr
+          (add_expr
+            (mul_expr
+              (primary_term
+                (atom
+                  (unquoted_atom))))))))))
+
+================================================================================
+Block comment
+================================================================================
+
+/* Multi-line
+   comment */
+fact.
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (block_comment)
+  (clause
+    (fact
+      (term
+        (pipe_expr
+          (add_expr
+            (mul_expr
+              (primary_term
+                (atom
+                  (unquoted_atom))))))))))
+
+================================================================================
+Quoted atom
+================================================================================
+
+hello('world with spaces').
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (clause
+    (fact
+      (term
+        (pipe_expr
+          (add_expr
+            (mul_expr
+              (primary_term
+                (struct
+                  (atom
+                    (unquoted_atom))
+                  (term
+                    (pipe_expr
+                      (add_expr
+                        (mul_expr
+                          (primary_term
+                            (atom
+                              (quoted_atom))))))))))))))))
+
+================================================================================
+CSG operations
+================================================================================
+
+union(cube(1,1,1), sphere(1)).
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (clause
+    (fact
+      (term
+        (pipe_expr
+          (add_expr
+            (mul_expr
+              (primary_term
+                (struct
+                  (atom
+                    (unquoted_atom))
+                  (term
+                    (pipe_expr
+                      (add_expr
+                        (mul_expr
+                          (primary_term
+                            (struct
+                              (atom
+                                (unquoted_atom))
+                              (term
+                                (pipe_expr
+                                  (add_expr
+                                    (mul_expr
+                                      (primary_term
+                                        (number))))))
+                              (term
+                                (pipe_expr
+                                  (add_expr
+                                    (mul_expr
+                                      (primary_term
+                                        (number))))))
+                              (term
+                                (pipe_expr
+                                  (add_expr
+                                    (mul_expr
+                                      (primary_term
+                                        (number))))))))))))
+                  (term
+                    (pipe_expr
+                      (add_expr
+                        (mul_expr
+                          (primary_term
+                            (struct
+                              (atom
+                                (unquoted_atom))
+                              (term
+                                (pipe_expr
+                                  (add_expr
+                                    (mul_expr
+                                      (primary_term
+                                        (number)))))))))))))))))))))

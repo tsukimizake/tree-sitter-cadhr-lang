@@ -1,0 +1,39 @@
+{
+  "name": "tree-sitter-cadhr-lang",
+  "version": "0.1.0",
+  "description": "Tree-sitter grammar for cadhr-lang (Prolog-like CAD language)",
+  "main": "bindings/node",
+  "keywords": [
+    "tree-sitter",
+    "parser",
+    "cadhr-lang",
+    "cad",
+    "prolog"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tsukimizake/daccad"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "nan": "^2.17.0"
+  },
+  "devDependencies": {
+    "tree-sitter-cli": "^0.20.8"
+  },
+  "scripts": {
+    "build": "tree-sitter generate",
+    "test": "tree-sitter test",
+    "parse": "tree-sitter parse"
+  },
+  "tree-sitter": [
+    {
+      "scope": "source.cadhr",
+      "injection-regex": "cadhr",
+      "file-types": [
+        "cadhr"
+      ],
+      "highlights": "queries/highlights.scm"
+    }
+  ]
+}
