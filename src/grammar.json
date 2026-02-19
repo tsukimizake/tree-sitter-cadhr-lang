@@ -202,6 +202,10 @@
         },
         {
           "type": "SYMBOL",
+          "name": "default_var"
+        },
+        {
+          "type": "SYMBOL",
           "name": "range_var"
         },
         {
@@ -219,6 +223,23 @@
         {
           "type": "SYMBOL",
           "name": "variable"
+        }
+      ]
+    },
+    "default_var": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "variable"
+        },
+        {
+          "type": "STRING",
+          "value": "@"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "number"
         }
       ]
     },
@@ -551,6 +572,10 @@
   "conflicts": [
     [
       "range_var",
+      "variable"
+    ],
+    [
+      "default_var",
       "variable"
     ]
   ],

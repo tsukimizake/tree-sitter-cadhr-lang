@@ -9,6 +9,7 @@ module.exports = grammar({
   conflicts: ($) => [
     // range_var can conflict with variable followed by comparison
     [$.range_var, $.variable],
+    [$.default_var, $.variable],
   ],
 
   rules: {
@@ -50,12 +51,15 @@ module.exports = grammar({
       choice(
         $.list,
         $.paren_expr,
+        $.default_var,
         $.range_var,
         $.number,
         $.struct,
         $.atom,
         $.variable
       ),
+
+    default_var: ($) => seq($.variable, "@", $.number),
 
     paren_expr: ($) => seq("(", $.term, ")"),
 
