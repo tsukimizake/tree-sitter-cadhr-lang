@@ -124,8 +124,8 @@ module.exports = grammar({
     // Variable: uppercase or underscore start
     variable: ($) => /[A-Z_][a-zA-Z0-9_]*/,
 
-    // Number: integer with optional negative sign
-    number: ($) => /-?[0-9]+/,
+    // Number: integer or fixed-point decimal (up to 2 decimal places)
+    number: ($) => /-?[0-9]+(\.[0-9]{1,2})?/,
 
     // Comments
     line_comment: ($) => seq("%", /[^\n]*/),
