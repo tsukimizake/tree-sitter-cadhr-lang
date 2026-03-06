@@ -38,10 +38,13 @@
 ; Standalone atoms (not function calls)
 (atom) @constant
 
+; String literals
+(string_literal) @string
+
 ; Quoted atoms
 (quoted_atom) @string
 
-; Escape sequences in quoted atoms
+; Escape sequences in quoted atoms and strings
 (escape_sequence) @string.escape
 
 ; Range variable bounds

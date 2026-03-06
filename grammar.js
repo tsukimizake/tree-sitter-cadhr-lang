@@ -54,6 +54,7 @@ module.exports = grammar({
         $.default_var,
         $.range_var,
         $.number,
+        $.string_literal,
         $.struct,
         $.atom,
         $.variable
@@ -119,7 +120,19 @@ module.exports = grammar({
         "'"
       ),
 
-    escape_sequence: ($) => /\\['\\\nt]/,
+    escape_sequence: ($) => /\\['"\\nt]/,
+
+    string_literal: ($) =>
+      seq(
+        '"',
+        repeat(
+          choice(
+            $.escape_sequence,
+            /[^"\\]+/
+          )
+        ),
+        '"'
+      ),
 
     // Variable: uppercase or underscore start
     variable: ($) => /[A-Z_][a-zA-Z0-9_]*/,
