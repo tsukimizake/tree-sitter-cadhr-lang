@@ -13,13 +13,26 @@ module.exports = grammar({
   ],
 
   rules: {
-    source_file: ($) => repeat($.clause),
+    source_file: ($) => repeat(choice($.clause, $.use_directive)),
 
     clause: ($) =>
       choice(
         $.rule,
         $.fact
       ),
+
+    use_directive: ($) =>
+      seq(
+        "#use",
+        "(",
+        $.string_literal,
+        optional(seq(",", $.use_expose)),
+        ")",
+        "."
+      ),
+
+    use_expose: ($) =>
+      seq("expose", "(", "[", optional(seq($.atom, repeat(seq(",", $.atom)))), "]", ")"),
 
     fact: ($) => seq($.term, "."),
 
@@ -56,6 +69,7 @@ module.exports = grammar({
         $.number,
         $.string_literal,
         $.struct,
+        $.qualified_atom,
         $.atom,
         $.variable
       ),
@@ -94,10 +108,12 @@ module.exports = grammar({
         "]"
       ),
 
-    // Struct/functor: atom(arg1, arg2, ...)
+    qualified_atom: ($) => seq($.atom, "::", $.atom),
+
+    // Struct/functor: atom(arg1, arg2, ...) or module::atom(arg1, ...)
     struct: ($) =>
       seq(
-        $.atom,
+        choice($.qualified_atom, $.atom),
         "(",
         optional(seq($.term, repeat(seq(",", $.term)))),
         ")"

@@ -36,6 +36,7 @@
   {
     "type": "block_comment",
     "named": true,
+    "extra": true,
     "fields": {}
   },
   {
@@ -114,6 +115,7 @@
   {
     "type": "line_comment",
     "named": true,
+    "extra": true,
     "fields": {}
   },
   {
@@ -205,6 +207,10 @@
           "named": true
         },
         {
+          "type": "qualified_atom",
+          "named": true
+        },
+        {
           "type": "range_var",
           "named": true
         },
@@ -218,6 +224,21 @@
         },
         {
           "type": "variable",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "qualified_atom",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "atom",
           "named": true
         }
       ]
@@ -283,6 +304,7 @@
   {
     "type": "source_file",
     "named": true,
+    "root": true,
     "fields": {},
     "children": {
       "multiple": true,
@@ -290,6 +312,10 @@
       "types": [
         {
           "type": "clause",
+          "named": true
+        },
+        {
+          "type": "use_directive",
           "named": true
         }
       ]
@@ -323,6 +349,10 @@
           "named": true
         },
         {
+          "type": "qualified_atom",
+          "named": true
+        },
+        {
           "type": "term",
           "named": true
         }
@@ -345,7 +375,45 @@
     }
   },
   {
+    "type": "use_directive",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "string_literal",
+          "named": true
+        },
+        {
+          "type": "use_expose",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "use_expose",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "atom",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "\"",
+    "named": false
+  },
+  {
+    "type": "#use",
     "named": false
   },
   {
@@ -397,6 +465,10 @@
     "named": false
   },
   {
+    "type": "::",
+    "named": false
+  },
+  {
     "type": "<",
     "named": false
   },
@@ -427,6 +499,10 @@
   {
     "type": "escape_sequence",
     "named": true
+  },
+  {
+    "type": "expose",
+    "named": false
   },
   {
     "type": "number",
