@@ -28,12 +28,18 @@
 ((variable) @variable.builtin
  (#eq? @variable.builtin "_"))
 
+; Use directive
+"#use" @keyword
+"expose" @keyword
+
 ; Numbers
 (number) @number
 
-; Atoms (functors/predicates)
+; Atoms (functors/predicates) - use function.builtin for all
 (struct
   (atom) @function)
+(struct
+  (qualified_atom) @function)
 
 ; Standalone atoms (not function calls)
 (atom) @constant
@@ -54,11 +60,3 @@
   (number) @number)
 (range_var
   (comp_op) @operator)
-
-; Built-in CAD primitives (optional - highlight special functors)
-((struct
-  (atom) @function.builtin)
- (#any-of? @function.builtin
-  "cube" "sphere" "cylinder" "tetrahedron"
-  "union" "difference" "intersection"
-  "translate" "scale" "rotate"))
