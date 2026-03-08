@@ -74,7 +74,7 @@ module.exports = grammar({
         $.variable
       ),
 
-    default_var: ($) => seq($.variable, "@", $.number),
+    default_var: ($) => seq($.variable, choice(":=", "="), $.number),
 
     paren_expr: ($) => seq("(", $.term, ")"),
 
