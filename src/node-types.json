@@ -15,6 +15,29 @@
     }
   },
   {
+    "type": "annotated_var",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "comp_op",
+          "named": true
+        },
+        {
+          "type": "number",
+          "named": true
+        },
+        {
+          "type": "variable",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "atom",
     "named": true,
     "fields": {},
@@ -62,25 +85,6 @@
     "type": "comp_op",
     "named": true,
     "fields": {}
-  },
-  {
-    "type": "default_var",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "number",
-          "named": true
-        },
-        {
-          "type": "variable",
-          "named": true
-        }
-      ]
-    }
   },
   {
     "type": "fact",
@@ -187,11 +191,11 @@
       "required": true,
       "types": [
         {
-          "type": "atom",
+          "type": "annotated_var",
           "named": true
         },
         {
-          "type": "default_var",
+          "type": "atom",
           "named": true
         },
         {
@@ -208,10 +212,6 @@
         },
         {
           "type": "qualified_atom",
-          "named": true
-        },
-        {
-          "type": "range_var",
           "named": true
         },
         {
@@ -254,29 +254,6 @@
       "types": [
         {
           "type": "escape_sequence",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "range_var",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "comp_op",
-          "named": true
-        },
-        {
-          "type": "number",
-          "named": true
-        },
-        {
-          "type": "variable",
           "named": true
         }
       ]

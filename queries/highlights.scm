@@ -54,9 +54,9 @@
 (escape_sequence) @string.escape
 
 ; Range variable bounds
-(range_var
+(annotated_var
   (variable) @variable)
-(range_var
+(annotated_var
   (number) @number)
-(range_var
+(annotated_var
   (comp_op) @operator)

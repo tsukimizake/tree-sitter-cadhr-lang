@@ -330,7 +330,7 @@ hoge(0<X<10).
                       (add_expr
                         (mul_expr
                           (primary_term
-                            (range_var
+                            (annotated_var
                               (number)
                               (comp_op)
                               (variable)
@@ -361,7 +361,7 @@ hoge(X<=10).
                       (add_expr
                         (mul_expr
                           (primary_term
-                            (range_var
+                            (annotated_var
                               (variable)
                               (comp_op)
                               (number))))))))))))))))
@@ -370,7 +370,7 @@ hoge(X<=10).
 Default variable annotation
 ================================================================================
 
-hoge(X@25).
+hoge(X=25).
 
 --------------------------------------------------------------------------------
 
@@ -390,9 +390,130 @@ hoge(X@25).
                       (add_expr
                         (mul_expr
                           (primary_term
-                            (default_var
+                            (annotated_var
                               (variable)
                               (number))))))))))))))))
+
+================================================================================
+Default with right bound
+================================================================================
+
+hoge(X=40<100).
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (clause
+    (fact
+      (term
+        (pipe_expr
+          (add_expr
+            (mul_expr
+              (primary_term
+                (struct
+                  (atom
+                    (unquoted_atom))
+                  (term
+                    (pipe_expr
+                      (add_expr
+                        (mul_expr
+                          (primary_term
+                            (annotated_var
+                              (variable)
+                              (number)
+                              (comp_op)
+                              (number))))))))))))))))
+
+================================================================================
+Left bound with default
+================================================================================
+
+hoge(0<X=40).
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (clause
+    (fact
+      (term
+        (pipe_expr
+          (add_expr
+            (mul_expr
+              (primary_term
+                (struct
+                  (atom
+                    (unquoted_atom))
+                  (term
+                    (pipe_expr
+                      (add_expr
+                        (mul_expr
+                          (primary_term
+                            (annotated_var
+                              (number)
+                              (comp_op)
+                              (variable)
+                              (number))))))))))))))))
+
+================================================================================
+Both bounds with default
+================================================================================
+
+hoge(0<X=40<100).
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (clause
+    (fact
+      (term
+        (pipe_expr
+          (add_expr
+            (mul_expr
+              (primary_term
+                (struct
+                  (atom
+                    (unquoted_atom))
+                  (term
+                    (pipe_expr
+                      (add_expr
+                        (mul_expr
+                          (primary_term
+                            (annotated_var
+                              (number)
+                              (comp_op)
+                              (variable)
+                              (number)
+                              (comp_op)
+                              (number))))))))))))))))
+
+================================================================================
+Left bound only
+================================================================================
+
+hoge(0<X).
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (clause
+    (fact
+      (term
+        (pipe_expr
+          (add_expr
+            (mul_expr
+              (primary_term
+                (struct
+                  (atom
+                    (unquoted_atom))
+                  (term
+                    (pipe_expr
+                      (add_expr
+                        (mul_expr
+                          (primary_term
+                            (annotated_var
+                              (number)
+                              (comp_op)
+                              (variable))))))))))))))))
 
 ================================================================================
 Arithmetic expression

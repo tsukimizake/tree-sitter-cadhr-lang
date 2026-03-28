@@ -6,11 +6,7 @@ module.exports = grammar({
 
   extras: ($) => [/\s/, $.line_comment, $.block_comment],
 
-  conflicts: ($) => [
-    // range_var can conflict with variable followed by comparison
-    [$.range_var, $.variable],
-    [$.default_var, $.variable],
-  ],
+  conflicts: ($) => [],
 
   rules: {
     source_file: ($) => repeat(choice($.clause, $.use_directive)),
@@ -64,8 +60,7 @@ module.exports = grammar({
       choice(
         $.list,
         $.paren_expr,
-        $.default_var,
-        $.range_var,
+        $.annotated_var,
         $.number,
         $.string_literal,
         $.struct,
@@ -74,23 +69,21 @@ module.exports = grammar({
         $.variable
       ),
 
-    default_var: ($) => seq($.variable, "=", $.number),
-
-    paren_expr: ($) => seq("(", $.term, ")"),
-
-    // Range variable: 0 < X < 10, X <= 10, 0 <= X, etc.
-    range_var: ($) =>
+    annotated_var: ($) =>
       prec(
         10,
         choice(
-          // Both bounds: 0 < X < 10
+          seq($.number, $.comp_op, $.variable, "=", $.number, $.comp_op, $.number),
+          seq($.number, $.comp_op, $.variable, "=", $.number),
           seq($.number, $.comp_op, $.variable, $.comp_op, $.number),
-          // Left bound only: 0 < X
           seq($.number, $.comp_op, $.variable),
-          // Right bound only: X < 10
+          seq($.variable, "=", $.number, $.comp_op, $.number),
+          seq($.variable, "=", $.number),
           seq($.variable, $.comp_op, $.number)
         )
       ),
+
+    paren_expr: ($) => seq("(", $.term, ")"),
 
     comp_op: ($) => choice("<=", ">=", "<", ">"),
 
