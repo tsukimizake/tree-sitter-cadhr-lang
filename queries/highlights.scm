@@ -60,3 +60,7 @@
   (number) @number)
 (annotated_var
   (comp_op) @operator)
+(annotated_var
+  "@" @operator)
+(eq_constraint
+  "=" @operator)

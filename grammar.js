@@ -34,7 +34,11 @@ module.exports = grammar({
 
     rule: ($) => seq($.term, ":-", $.goals, "."),
 
-    goals: ($) => seq($.term, repeat(seq(",", $.term))),
+    goals: ($) => seq($.goal, repeat(seq(",", $.goal))),
+
+    goal: ($) => choice($.eq_constraint, $.term),
+
+    eq_constraint: ($) => seq($.term, "=", $.term),
 
     term: ($) => $.pipe_expr,
 
@@ -73,12 +77,12 @@ module.exports = grammar({
       prec(
         10,
         choice(
-          seq($.number, $.comp_op, $.variable, "=", $.number, $.comp_op, $.number),
-          seq($.number, $.comp_op, $.variable, "=", $.number),
+          seq($.number, $.comp_op, $.variable, "@", $.number, $.comp_op, $.number),
+          seq($.number, $.comp_op, $.variable, "@", $.number),
           seq($.number, $.comp_op, $.variable, $.comp_op, $.number),
           seq($.number, $.comp_op, $.variable),
-          seq($.variable, "=", $.number, $.comp_op, $.number),
-          seq($.variable, "=", $.number),
+          seq($.variable, "@", $.number, $.comp_op, $.number),
+          seq($.variable, "@", $.number),
           seq($.variable, $.comp_op, $.number)
         )
       ),

@@ -174,7 +174,7 @@
       "members": [
         {
           "type": "SYMBOL",
-          "name": "term"
+          "name": "goal"
         },
         {
           "type": "REPEAT",
@@ -187,10 +187,40 @@
               },
               {
                 "type": "SYMBOL",
-                "name": "term"
+                "name": "goal"
               }
             ]
           }
+        }
+      ]
+    },
+    "goal": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "eq_constraint"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "term"
+        }
+      ]
+    },
+    "eq_constraint": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "term"
+        },
+        {
+          "type": "STRING",
+          "value": "="
+        },
+        {
+          "type": "SYMBOL",
+          "name": "term"
         }
       ]
     },
@@ -367,7 +397,7 @@
               },
               {
                 "type": "STRING",
-                "value": "="
+                "value": "@"
               },
               {
                 "type": "SYMBOL",
@@ -400,7 +430,7 @@
               },
               {
                 "type": "STRING",
-                "value": "="
+                "value": "@"
               },
               {
                 "type": "SYMBOL",
@@ -459,7 +489,7 @@
               },
               {
                 "type": "STRING",
-                "value": "="
+                "value": "@"
               },
               {
                 "type": "SYMBOL",
@@ -484,7 +514,7 @@
               },
               {
                 "type": "STRING",
-                "value": "="
+                "value": "@"
               },
               {
                 "type": "SYMBOL",
